@@ -62,3 +62,9 @@ def deploy_authorizable(web3):
     compiled_contract = compile_contracts("Authorizable")
     deployed_contract = deploy_compiled_contract(compiled_contract, web3)
     return deployed_contract
+
+
+def deploy_destructable(web3):
+    compiled_contract = compile_contracts("Destructable")
+    deployed_contract = deploy_compiled_contract(compiled_contract, web3)
+    return deployed_contract

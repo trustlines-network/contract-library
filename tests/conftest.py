@@ -7,16 +7,8 @@ from web3.providers.eth_tester import EthereumTesterProvider
 from eth_utils import to_checksum_address
 
 from .deploy_util import (deploy_ownable,
-                          deploy_authorizable)
-
-
-RELEASE_BLOCK_NUMBER_OFFSET = 50
-
-# Fix the indexes used to get addresses from the test chain.
-# Mind the difference between count and index.
-HONEST_VALIDATOR_COUNT = 2
-MALICIOUS_VALIDATOR_INDEX = HONEST_VALIDATOR_COUNT
-MALICIOUS_NON_VALIDATOR_INDEX = MALICIOUS_VALIDATOR_INDEX + 1
+                          deploy_authorizable,
+                          deploy_destructable)
 
 
 SignedBlockHeader = namedtuple('SignedBlockHeader', 'unsignedBlockHeader signature')
@@ -65,3 +57,8 @@ def authorizable_contract_with_addresses(accounts, web3):
     contract.functions.addAuthorizedAddress(accounts[1]).transact({"from": accounts[0]})
     contract.functions.addAuthorizedAddress(accounts[2]).transact({"from": accounts[0]})
     return contract
+
+
+@pytest.fixture()
+def destructable_contract(web3):
+    return deploy_destructable(web3)
