@@ -55,5 +55,10 @@ def check_successful_tx(web3: Web3, txid: str, timeout=180) -> dict:
 def deploy_ownable(web3):
     compiled_contract = compile_contracts("Ownable")
     deployed_contract = deploy_compiled_contract(compiled_contract, web3)
+    return deployed_contract
 
+
+def deploy_authorizable(web3):
+    compiled_contract = compile_contracts("Authorizable")
+    deployed_contract = deploy_compiled_contract(compiled_contract, web3)
     return deployed_contract

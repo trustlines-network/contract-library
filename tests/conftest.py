@@ -6,7 +6,8 @@ from web3 import Web3
 from web3.providers.eth_tester import EthereumTesterProvider
 from eth_utils import to_checksum_address
 
-from .deploy_util import (deploy_ownable)
+from .deploy_util import (deploy_ownable,
+                          deploy_authorizable)
 
 
 RELEASE_BLOCK_NUMBER_OFFSET = 50
@@ -48,11 +49,19 @@ def accounts(web3):
     return [to_checksum_address(account) for account in accounts]
 
 
-@pytest.fixture(scope="session")
-def ownable_contract_session(web3):
-    return deploy_ownable(web3)
-
-
-@pytest.fixture
+@pytest.fixture()
 def ownable_contract(web3):
     return deploy_ownable(web3)
+
+
+@pytest.fixture()
+def authorizable_contract(web3):
+    return deploy_authorizable(web3)
+
+
+@pytest.fixture()
+def authorizable_contract_with_addresses(accounts, web3):
+    contract = deploy_authorizable(web3)
+    contract.functions.addAuthorizedAddress(accounts[1]).transact({"from": accounts[0]})
+    contract.functions.addAuthorizedAddress(accounts[2]).transact({"from": accounts[0]})
+    return contract
