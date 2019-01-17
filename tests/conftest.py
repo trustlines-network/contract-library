@@ -8,7 +8,8 @@ from eth_utils import to_checksum_address
 
 from .deploy_util import (deploy_ownable,
                           deploy_authorizable,
-                          deploy_destructable)
+                          deploy_destructable,
+                          deploy_it_set)
 
 
 SignedBlockHeader = namedtuple('SignedBlockHeader', 'unsignedBlockHeader signature')
@@ -62,3 +63,16 @@ def authorizable_contract_with_addresses(accounts, web3):
 @pytest.fixture()
 def destructable_contract(web3):
     return deploy_destructable(web3)
+
+
+@pytest.fixture()
+def test_it_set_contract(web3):
+    return deploy_it_set(web3)
+
+
+@pytest.fixture()
+def test_it_set_contract_with_addresses(accounts, web3):
+    contract = deploy_it_set(web3)
+    contract.functions.testInsert(accounts[0]).transact({"from": accounts[0]})
+    contract.functions.testInsert(accounts[1]).transact({"from": accounts[0]})
+    return contract
