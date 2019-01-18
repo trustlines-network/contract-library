@@ -1,0 +1,27 @@
+repos:
+-   repo: git://github.com/pre-commit/pre-commit-hooks
+    sha: v2.0.0
+    hooks:
+    - id: check-added-large-files
+    - id: check-ast
+      language_version: python3.6
+    - id: check-byte-order-marker
+    - id: check-case-conflict
+    - id: check-json
+    - id: check-merge-conflict
+    - id: check-yaml
+    - id: debug-statements
+      language_version: python3.6
+    - id: end-of-file-fixer
+      exclude: .bumpversion.cfg
+    - id: flake8
+      language_version: python3.6
+    - id: trailing-whitespace
+      exclude: contracts/ECDSA.sol|contracts/RLPReader.sol|contracts/TestRLPReader.sol
+    - id: no-commit-to-branch
+      args: [--branch, develop, --branch, master]
+-   repo: https://github.com/schmir/Ethlint.git
+    rev: bbbac907e7352d59fcd133f73295a042a2cdcb17
+    hooks:
+    - id: solium
+      args: ["-f", "contracts/Destructable.sol", "-f", "contracts/Ownable.sol", "-f", "contracts/it_set_lib.sol",  "-f",  "contracts/TestItSet.sol"]
