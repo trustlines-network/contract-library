@@ -70,7 +70,13 @@ def deploy_destructable(web3):
     return deployed_contract
 
 
-def deploy_it_set(web3):
+def deploy_test_it_set(web3):
     compiled_contract = compile_contracts("TestItSet")
+    deployed_contract = deploy_compiled_contract(compiled_contract, web3)
+    return deployed_contract
+
+
+def deploy_test_ecdsa(web3):
+    compiled_contract = compile_contracts("TestECDSA")
     deployed_contract = deploy_compiled_contract(compiled_contract, web3)
     return deployed_contract
