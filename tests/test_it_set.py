@@ -1,8 +1,5 @@
 #! pytest
 
-import pytest
-import eth_tester.exceptions
-
 
 def test_insert(test_it_set_contract, accounts, web3):
     contract = test_it_set_contract

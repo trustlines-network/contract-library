@@ -10,7 +10,8 @@ from .deploy_util import (deploy_ownable,
                           deploy_authorizable,
                           deploy_destructable,
                           deploy_test_it_set,
-                          deploy_test_ecdsa,)
+                          deploy_test_ecdsa,
+                          deploy_test_rlp_reader)
 
 
 SignedBlockHeader = namedtuple('SignedBlockHeader', 'unsignedBlockHeader signature')
@@ -82,3 +83,8 @@ def test_it_set_contract_with_addresses(accounts, web3):
 @pytest.fixture()
 def test_ecdsa_contract(web3):
     return deploy_test_ecdsa(web3)
+
+
+@pytest.fixture()
+def test_rlp_reader_contract(web3):
+    return deploy_test_rlp_reader(web3)

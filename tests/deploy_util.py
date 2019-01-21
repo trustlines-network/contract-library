@@ -80,3 +80,9 @@ def deploy_test_ecdsa(web3):
     compiled_contract = compile_contracts("TestECDSA")
     deployed_contract = deploy_compiled_contract(compiled_contract, web3)
     return deployed_contract
+
+
+def deploy_test_rlp_reader(web3):
+    compiled_contract = compile_contracts("TestRLPReader")
+    deployed_contract = deploy_compiled_contract(compiled_contract, web3)
+    return deployed_contract
