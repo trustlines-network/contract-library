@@ -2,7 +2,6 @@ web3
 pytest
 flake8
 pep8-naming
-eth_tester[py-evm]
-py-solc
+contract-deploy-tools
 rlp
 eth-utils
