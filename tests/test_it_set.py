@@ -7,6 +7,7 @@ def test_insert(test_it_set_contract, accounts, web3):
     tx_receipt = web3.eth.getTransactionReceipt(tx_hash)
 
     assert tx_receipt is not None
+    assert contract.functions.testContains(accounts[0]).call() is True
 
 
 def test_contains(test_it_set_contract_with_addresses, accounts):

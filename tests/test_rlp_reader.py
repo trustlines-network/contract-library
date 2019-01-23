@@ -5,7 +5,7 @@ from web3 import Web3
 
 
 def test_int_to_rlp_item(test_rlp_reader_contract):
-    """test conversion function from integer to RLPItem"""
+    """test conversion function from rlp encoded integer to internal data struct RLPItem"""
     contract = test_rlp_reader_contract
     rlp_encoded_item = rlp.encode(1)
     rlp_item_from_contract = contract.functions.testToRlpItem(rlp_encoded_item).call()
@@ -14,7 +14,7 @@ def test_int_to_rlp_item(test_rlp_reader_contract):
 
 
 def test_string_to_rlp_item(test_rlp_reader_contract):
-    """test conversion function from string to RLPItem"""
+    """test conversion function from rlp encoded string to internal data struct RLPItem"""
     contract = test_rlp_reader_contract
     rlp_encoded_item = rlp.encode('dog')
     rlp_item_from_contract = contract.functions.testToRlpItem(rlp_encoded_item).call()
@@ -23,7 +23,7 @@ def test_string_to_rlp_item(test_rlp_reader_contract):
 
 
 def test_list_to_rlp_item(test_rlp_reader_contract):
-    """test conversion function from list to RLPItem"""
+    """test conversion function from rlp encoded list to internal data struct RLPItem"""
     contract = test_rlp_reader_contract
     rlp_encoded_item = rlp.encode(['cat', 'dog'])
     rlp_item_from_contract = contract.functions.testToRlpItem(rlp_encoded_item).call()
