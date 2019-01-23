@@ -76,7 +76,7 @@ def test_recover_v0_sig_with_wrong_version(test_ecdsa_contract):
 
 
 def test_recover_v1_signature_01_version(test_ecdsa_contract):
-    """test recover of v0 signature with 01 as version value"""
+    """test recover of v1 signature with 01 as version value"""
     contract = test_ecdsa_contract
     version = '01'
     signature_with_version = V1_SIGNATURE_WITHOUT_VERSION + version
@@ -87,7 +87,7 @@ def test_recover_v1_signature_01_version(test_ecdsa_contract):
 
 
 def test_recover_v1_signature_28_version(test_ecdsa_contract):
-    """test recover of v0 signature with 28 as version value"""
+    """test recover of v1 signature with 28 as version value"""
     contract = test_ecdsa_contract
     version = '1c'  # 28 = 1c
     signature_with_version = V1_SIGNATURE_WITHOUT_VERSION + version
