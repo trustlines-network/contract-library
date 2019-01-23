@@ -18,8 +18,8 @@ def authorizable_contract(deploy_contract):
 @pytest.fixture(scope="session")
 def authorizable_contract_with_addresses(accounts, deploy_contract):
     contract = deploy_contract("Authorizable")
+    contract.functions.addAuthorizedAddress(accounts[0]).transact({"from": accounts[0]})
     contract.functions.addAuthorizedAddress(accounts[1]).transact({"from": accounts[0]})
-    contract.functions.addAuthorizedAddress(accounts[2]).transact({"from": accounts[0]})
     return contract
 
 

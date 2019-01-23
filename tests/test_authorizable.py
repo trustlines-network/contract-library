@@ -27,15 +27,14 @@ def test_add_authorized_address_not_owner(authorizable_contract, accounts, web3)
         contract.functions.addAuthorizedAddress(other_account).transact({"from": other_account})
 
 
-def test_add_already_authorized_address(authorizable_contract, accounts, web3):
+def test_add_already_authorized_address(authorizable_contract_with_addresses,
+                                        accounts,
+                                        web3):
     """test targetNotAuthorized modifier for addAuthorizedAddress"""
-    contract = authorizable_contract
-    authorized_account = accounts[1]
-
-    contract.functions.addAuthorizedAddress(authorized_account).transact({"from": accounts[0]})
+    contract = authorizable_contract_with_addresses
 
     with pytest.raises(eth_tester.exceptions.TransactionFailed):
-        contract.functions.addAuthorizedAddress(authorized_account).transact({"from": accounts[0]})
+        contract.functions.addAuthorizedAddress(accounts[0]).transact({"from": accounts[0]})
 
 
 def test_remove_authorized_address(authorizable_contract_with_addresses,
