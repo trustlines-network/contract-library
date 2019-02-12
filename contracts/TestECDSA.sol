@@ -10,8 +10,6 @@ import "./ECDSA.sol";
 
 contract TestECDSA {
 
-    constructor() public {}
-
     function() external {}
 
     function testRecover(bytes32 _hash, bytes _signature) public returns (address) {
