@@ -10,8 +10,6 @@ import "./RLPReader.sol";
 
 contract TestRLPReader {
 
-    constructor() public {}
-
     function() external {}
 
     function testToRlpItem(bytes _rlpEncodedItem)

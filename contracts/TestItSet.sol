@@ -11,8 +11,6 @@ contract TestItSet {
 
     ItSet.AddressSet addressSet;
 
-    constructor() public {}
-
     function() external {}
 
     function testInsert(address _addressToInsert) public {
