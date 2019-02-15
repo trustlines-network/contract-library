@@ -20,8 +20,7 @@ repos:
       exclude: contracts/ECDSA.sol|contracts/RLPReader.sol|contracts/TestRLPReader.sol
     - id: no-commit-to-branch
       args: [--branch, develop, --branch, master]
--   repo: https://github.com/schmir/Ethlint.git
-    rev: bbbac907e7352d59fcd133f73295a042a2cdcb17
-    hooks:
-    - id: solium
-      args: ["-f", "contracts/Destructable.sol", "-f", "contracts/Ownable.sol", "-f", "contracts/it_set_lib.sol",  "-f",  "contracts/TestItSet.sol"]
+- repo: https://github.com/schmir/ethlint-pre-commit.git
+  rev: 'f25cec614947e1fb9966f52009eeb466650185f6'
+  hooks:
+  - id: ethlint
