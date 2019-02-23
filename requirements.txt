@@ -5,3 +5,5 @@ pep8-naming
 contract-deploy-tools
 rlp
 eth-utils
+black
+pre-commit

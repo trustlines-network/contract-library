@@ -15,7 +15,9 @@ def test_transfer_ownership_from_owner(ownable_contract, accounts, web3):
     """test if owner changes after transfer of ownership"""
     contract = ownable_contract
     new_owner = accounts[1]
-    tx_hash = contract.functions.transferOwnership(new_owner).transact({"from": accounts[0]})
+    tx_hash = contract.functions.transferOwnership(new_owner).transact(
+        {"from": accounts[0]}
+    )
     tx_receipt = web3.eth.getTransactionReceipt(tx_hash)
 
     assert tx_receipt is not None
@@ -28,4 +30,6 @@ def test_transfer_ownership_from_other(ownable_contract, accounts):
     other_account = accounts[1]
 
     with pytest.raises(eth_tester.exceptions.TransactionFailed):
-        contract.functions.transferOwnership(other_account).transact({"from": other_account})
+        contract.functions.transferOwnership(other_account).transact(
+            {"from": other_account}
+        )

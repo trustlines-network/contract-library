@@ -2,7 +2,7 @@ import pytest
 from collections import namedtuple
 
 
-SignedBlockHeader = namedtuple('SignedBlockHeader', 'unsignedBlockHeader signature')
+SignedBlockHeader = namedtuple("SignedBlockHeader", "unsignedBlockHeader signature")
 
 
 @pytest.fixture(scope="session")

@@ -116,6 +116,17 @@ jobs:
           command: |
             flake8 tests
 
+  run-black:
+    executor: ubuntu-builder
+    steps:
+      - attach_workspace:
+          at: '~'
+      - config-path
+      - run:
+          name: Run black
+          command: |
+            black --check tests
+
 workflows:
   version: 2
   default:
@@ -127,6 +138,11 @@ workflows:
           filters:
             <<: *tagged-filter
       - run-flake8:
+          requires:
+            - install
+          filters:
+            <<: *tagged-filter
+      - run-black:
           requires:
             - install
           filters:
