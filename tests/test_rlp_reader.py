@@ -16,7 +16,7 @@ def test_int_to_rlp_item(test_rlp_reader_contract):
 def test_string_to_rlp_item(test_rlp_reader_contract):
     """test conversion function from rlp encoded string to internal data struct RLPItem"""
     contract = test_rlp_reader_contract
-    rlp_encoded_item = rlp.encode('dog')
+    rlp_encoded_item = rlp.encode("dog")
     rlp_item_from_contract = contract.functions.testToRlpItem(rlp_encoded_item).call()
 
     assert rlp_item_from_contract[0] == 4
@@ -25,7 +25,7 @@ def test_string_to_rlp_item(test_rlp_reader_contract):
 def test_list_to_rlp_item(test_rlp_reader_contract):
     """test conversion function from rlp encoded list to internal data struct RLPItem"""
     contract = test_rlp_reader_contract
-    rlp_encoded_item = rlp.encode(['cat', 'dog'])
+    rlp_encoded_item = rlp.encode(["cat", "dog"])
     rlp_item_from_contract = contract.functions.testToRlpItem(rlp_encoded_item).call()
 
     assert rlp_item_from_contract[0] == 9
@@ -90,7 +90,7 @@ def test_long_int_item_length(test_rlp_reader_contract):
 def test_string_item_length(test_rlp_reader_contract):
     """test item length of string"""
     contract = test_rlp_reader_contract
-    rlp_encoded_item = rlp.encode('dog')
+    rlp_encoded_item = rlp.encode("dog")
 
     assert contract.functions.testItemLength(rlp_encoded_item).call() == 4
 
@@ -98,10 +98,12 @@ def test_string_item_length(test_rlp_reader_contract):
 def test_to_bytes(test_rlp_reader_contract):
     """test conversion function to bytes"""
     contract = test_rlp_reader_contract
-    str_to_encode = 'dog'
+    str_to_encode = "dog"
     rlp_encoded_item = rlp.encode(str_to_encode)
 
-    assert contract.functions.testToBytes(rlp_encoded_item).call() == Web3.toBytes(text=str_to_encode)
+    assert contract.functions.testToBytes(rlp_encoded_item).call() == Web3.toBytes(
+        text=str_to_encode
+    )
 
 
 def test_to_boolean(test_rlp_reader_contract):
@@ -125,7 +127,7 @@ def test_to_uint(test_rlp_reader_contract):
 def test_to_address(test_rlp_reader_contract):
     """test conversion function to address"""
     contract = test_rlp_reader_contract
-    zero_address = '0x0000000000000000000000000000000000000000'
-    rlp_encoded_item = rlp.encode(Web3.toBytes(hexstr='0x0'))
+    zero_address = "0x0000000000000000000000000000000000000000"
+    rlp_encoded_item = rlp.encode(Web3.toBytes(hexstr="0x0"))
 
     assert contract.functions.testToAddress(rlp_encoded_item).call() == zero_address
